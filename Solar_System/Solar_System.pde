@@ -160,11 +160,11 @@ void keyPressed() {
     //For higher speeds, increasing the time_speed might not actually speed up the program,
     //since the increase in time_speed will be canceled out by a decrease in framerate
     if (keyCode == RIGHT) {
-      time_speed = constrain(time_speed*2, 1, 16384);
+      time_speed = constrain(time_speed*2, 1, 32768);
       speed_img = loadImage("Speed_Up.png");
       transparency = 255;
     } else if (keyCode == LEFT) {
-      time_speed = constrain(time_speed/2, 1, 16384);
+      time_speed = constrain(time_speed/2, 1, 32768);
       speed_img = loadImage("Speed_Down.png");
       transparency = 255;
     }
