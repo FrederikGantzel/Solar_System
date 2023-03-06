@@ -7,7 +7,7 @@ int transparency = 0;
 float scaleFactor = 0.0005;
 float translate_x, translate_y = 0.0;
 float largest_orbit = 70000000;
-int nstars = 1000;
+int nstars = 500;
 int time_speed = 64;
 int pause_speed = 0;
 Star[] stars = new Star[nstars];
@@ -23,7 +23,7 @@ void setup() {
   fullScreen();
   frameRate(60);
   for (int i=0; i<nstars; i++) {
-    stars[i] = new Star(new PVector(random(-width, width), random(-height, height)));
+    stars[i] = new Star(new PVector(random(-width/2, width/2), random(-height/2, height/2)));
   }
   model = new System_Simulation();
 }
@@ -56,7 +56,7 @@ void draw() {
   //image(loadImage("Star_Sky.jpg"), (-width/2-translate_x)/scaleFactor, (-height/2-translate_y)/scaleFactor,
   //  width/scaleFactor, height/scaleFactor);
   
-  //We set the background to a very dark blue, and draw the stars. I found that 1000 stars was a nice number
+  //We set the background to a very dark blue, and draw the stars. I found that 500 stars was a nice number
   background(0, 0, 30);
   for (int i=0; i<nstars; i++) {
     stars[i].drawStar();
