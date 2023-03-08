@@ -4,7 +4,7 @@ A physics based model of the Solar System that I created as a hobby project.
 ## Installation
 Download the "Solar_System" folder and put it on your desktop or wherever else feels best for you. The program is written with Processing, and thus it is easily run using this application. Processing can be downloaded here: https://processing.org/download
 
-When you have Processing installed, simply open the Solar_System folder in Processing and press the "Play" button. The simulation is set to fullscreen by default, but if you'd rather it be windowed, open the Solar_System.pde file, comment out the fullScreen(); command on line 23, and un-comment the size() command on line 22 (and potentially edit the dimentions of the window set in the size() command).
+When you have Processing installed, simply open the Solar_System folder in Processing and press the "Play" button. The simulation is set to fullscreen by default, but if you'd rather it be windowed, open the Solar_System.pde file, comment out the fullScreen(); command on line 21, and un-comment the size() command on line 20 (and potentially edit the dimentions of the window set in the size() command).
 
 ## Usage
 The program is a big physics based model of the Solar System. The program simply sets up the mass, position, and velocity of all the objects, and then let the laws of physics take it from there. The user can interact with the simulation using the mouse; They can zoom in or our using the mouse scrolling wheel, they can drag the camera around by clicking and dragging their cursor, and they can click on an object to set in in focus view. The right and left arrow keys can also be used to speed up or slow down time, and the spacebar can be pressed to pause the simulation.
@@ -25,6 +25,6 @@ When simulating the objects' orbits, i do not take into account their real-life 
 
 The objects' starting position is a perfect line along the x-axis, and thus their velocities are always in exactly the y direction. The objects can never line up this way in real life, due to their respective orbital periods, but setting their starting positions and velocities this way significantly simplified the setup process.
 
-When the time is sped up fast enough, the framerate of the simulation starts to drop dramatically, since the amound of calculations needed to be done each frame doubles with each speed up of time. The framerate will thus depend a lot on the device you are running the simulation on. Stronger devices might be able to handle the simulation on max speed just fine, but if you are running on a weaver device, you should probably stick to the lower time speeds.
+When the time is sped up fast enough, the framerate of the simulation starts to drop dramatically, since the amound of calculations needed to be done each frame doubles with each speed up of time. The framerate will thus depend a lot on the device you are running the simulation on. Stronger devices might be able to handle the simulation on max speed just fine, but if you are running on a weaker device, you should probably stick to the lower time speeds.
 
 
