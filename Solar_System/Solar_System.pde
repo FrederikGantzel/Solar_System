@@ -1,5 +1,3 @@
-import java.awt.Color;
-
 
 //display related values
 PImage speed_img;
@@ -19,12 +17,15 @@ void setup() {
   
   //If you'd rather have the simulation windowed, use the size() command below (with adequate dimentions),
   //and comment out the fullScreen() command
-  //size(1800, 900);
-  fullScreen();
+  size(1800, 900);
+  //fullScreen();
   frameRate(60);
+  
+  //Here, we create all the stars. I found 500 stars to be a nice number
   for (int i=0; i<nstars; i++) {
     stars[i] = new Star(new PVector(random(-width/2, width/2), random(-height/2, height/2)));
   }
+  //Create the model object
   model = new System_Simulation();
 }
 
@@ -40,10 +41,9 @@ void draw() {
   if(focus != null) {
     translate_x = -(float)focus.position.x*scaleFactor;
     translate_y = -(float)focus.position.y*scaleFactor;
-    translate(translate_x, translate_y);
-  } else {
-    translate(translate_x, translate_y);
-  } //<>//
+  }
+  translate(translate_x, translate_y);
+   //<>//
   //Zoom out to the current zoom level
   scale(scaleFactor);
   //Since we use the tint() function later, we have to specify that, for the time being, no tint is required
@@ -56,7 +56,7 @@ void draw() {
   //image(loadImage("Star_Sky.jpg"), (-width/2-translate_x)/scaleFactor, (-height/2-translate_y)/scaleFactor,
   //  width/scaleFactor, height/scaleFactor);
   
-  //We set the background to a very dark blue, and draw the stars. I found that 500 stars was a nice number
+  //We set the background to a very dark blue, and draw the stars
   background(0, 0, 30);
   for (int i=0; i<nstars; i++) {
     stars[i].drawStar();
@@ -155,7 +155,7 @@ void mouseWheel(MouseEvent e) {
 
 //Clicking the right arrow, left arrow, or spacebar, either speeds up, slows down, or pauses the simulation.
 void keyPressed() {
-  //We only want to be able to speed up or slow down if the simulation is not paused
+  //We dont want to be able to speed up or slow down time if the simulation is paused
   if (key == CODED && time_speed > 0) {
     //For higher speeds, increasing the time_speed might not actually speed up the program,
     //since the increase in time_speed will be canceled out by a decrease in framerate
