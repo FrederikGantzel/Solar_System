@@ -17,8 +17,8 @@ void setup() {
   
   //If you'd rather have the simulation windowed, use the size() command below (with adequate dimentions),
   //and comment out the fullScreen() command
-  size(1800, 900);
-  //fullScreen();
+  //size(1800, 900);
+  fullScreen();
   frameRate(60);
   
   //Here, we create all the stars. I found 500 stars to be a nice number
