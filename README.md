@@ -25,6 +25,8 @@ When simulating the objects' orbits, i do not take into account their real-life 
 
 The objects' starting position is a perfect line along the x-axis, and thus their velocities are always in exactly the y direction. The objects can never line up this way in real life, due to their respective orbital periods, but setting their starting positions and velocities this way significantly simplified the setup process.
 
+All the objects in the simulation orbit the same way around their "parent" object (clockwise), but in real life, some objects orbit the opposite way around their parent object (counterclockwise). Venus and Uranus are examples of this in the real Solar System.
+
 When the time is sped up fast enough, the framerate of the simulation starts to drop dramatically, since the amound of calculations needed to be done each frame doubles with each speed up of time. The framerate will thus depend a lot on the device you are running the simulation on. Stronger devices might be able to handle the simulation on max speed just fine, but if you are running on a weaker device, you should probably stick to the lower time speeds.
 
 
