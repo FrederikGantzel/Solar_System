@@ -23,7 +23,7 @@ public class System_Simulation { //<>// //<>//
     //Sun
     //Orbital Period = 0 Minutes
     space_objects[0] = new Space_Object("Sun", 332950, 0, 0,
-      150, 1860, 4000000);
+      150, 9300, 4000000);
       
       
     //Mercury
