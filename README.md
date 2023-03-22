@@ -23,7 +23,7 @@ In order to simplify the simulation, the Solar System is modelled in 2d, even th
 
 When simulating the objects' orbits, i do not take into account their real-life eccentricity (that is, their orbits are more or less perfectly circular in this simulation, even though many objects real-life orbits are elliptical to a certain extent). When inputting the objects' starting distance from the Sun, i simply input their semi-major axis.
 
-The objects' starting position is a perfect line along the x-axis, and thus their velocities are always in exactly the y direction. The objects can never line up this way in real life, due to their respective orbital periods, but setting their starting positions and velocities this way significantly simplified the setup process.
+The objects' starting position is a perfect line along the x-axis, and thus their starting velocities are in exactly the y direction. The objects can never line up this way in real life, due to their respective orbital periods, but setting their starting positions and velocities this way significantly simplified the setup process.
 
 All the objects in the simulation orbit the same way around their "parent" object (clockwise), but in real life, some objects orbit the opposite way around their parent object (counterclockwise). Venus and Uranus are examples of this in the real Solar System.
 
