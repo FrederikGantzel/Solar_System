@@ -14,7 +14,7 @@ public class System_Simulation { //<>// //<>//
     //I don't take eccentricity into account when inputting the distance,
     //instead i simply use the semi-major axis of all objects
     //distance for moons is semi-major axis + semi-major axis of the body being orbited
-    //Inputs are: Name, mass (Earth Masses), distance (Astronomical Units / 1,000,000) and Velocity (Astronomical Units / 100000 per minute),
+    //Inputs are: Name, mass (Earth Masses), distance (Astronomical Units / 1,000,000) and Velocity (Astronomical Units / 1,000,000 per minute),
     //Image size, Minimum image size, Maximum image size.
     //The image sizes are more or less determined by what would look the nicest.
     //For big enough objects (The sun and the gas giants), the mimimum image size is adjusted to fit their actual size.
@@ -120,7 +120,9 @@ public class System_Simulation { //<>// //<>//
     space_objects[23] = new Space_Object("Neptune", 17.147, 30078000, 2.1802,
       200, 331, 1000000);
     //Orbital Period = 8462.66976 Minutes;
-    space_objects[24] = new Space_Object("Triton", 0.0035816, 2371.42 + 30078000, 1.76068 + 2.1802,
+    //Triton is unique since it has a retrograde orbit around Neptune,
+    //and thus it orbits the opposide way, compared to other moons. Thus the velocity is in the -y direction
+    space_objects[24] = new Space_Object("Triton", 0.0035816, 2371.42 + 30078000, -1.76068 + 2.1802,
       50, 50, 10000);
       
       
@@ -146,8 +148,8 @@ public class System_Simulation { //<>// //<>//
     double total_mass = 0;
     double total_momentum = 0;
     for (int i=0; i<objects; i++) {
-      total_mass = total_mass + space_objects[i].mass;
-      total_momentum = total_momentum + (space_objects[i].mass * space_objects[i].velocity.y);
+      total_mass += space_objects[i].mass;
+      total_momentum += (space_objects[i].mass * space_objects[i].velocity.y);
     }
     double sun_velocity = total_momentum/total_mass;
     
@@ -155,7 +157,7 @@ public class System_Simulation { //<>// //<>//
     //the velocity of the Sun resulting from this momentum is quite small (but still noticeable).
     //We also subtract this velocity from all other objects, so their velocity stays the same relative to the Sun
     for (int i=0; i<objects; i++) {
-      space_objects[i].velocity.y = space_objects[i].velocity.y - sun_velocity;
+      space_objects[i].velocity.y -= sun_velocity;
     }
     
     //We just initialize the current mouse over as null
@@ -219,7 +221,7 @@ public class System_Simulation { //<>// //<>//
         //split between the x and y direction with the normalized vector
         //(The force in the x direction plus the force in the y direction will always be equal to the full force)
         force.normalize();
-        force.mult((-space_objects[i].mass * space_objects[j].mass * g)/(r*r));
+        force.mult((space_objects[i].mass * space_objects[j].mass * g)/(r*r));
         
         //We calculate the acceleration of the objects as a result of the force applied on them:
         //Acceleration = Force / Mass
@@ -228,10 +230,10 @@ public class System_Simulation { //<>// //<>//
         acceleration_i = force.copy().div(space_objects[i].mass);
         acceleration_j = force.copy().div(space_objects[j].mass);
         
-        //We add the resulting acceleration to object i
-        space_objects[i].velocity.add(acceleration_i);
-        //The acceleration of object j is also applied, but in the opposite direction.
-        space_objects[j].velocity.sub(acceleration_j);
+        //We add the resulting acceleration to object j
+        space_objects[j].velocity.add(acceleration_j);
+        //The acceleration of object I is also applied, but in the opposite direction.
+        space_objects[i].velocity.sub(acceleration_i);
         
       }
       

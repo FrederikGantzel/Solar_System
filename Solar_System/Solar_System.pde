@@ -143,7 +143,7 @@ void mouseWheel(MouseEvent e) {
     }
     
     //We don't want to be able to zoom in or out too far. Thus, the constrain
-    scaleFactor = constrain(scaleFactor*zoom, 0.000008, 1.10);
+    scaleFactor = constrain(scaleFactor*zoom, 0.00001, 1.0);
     translate_x *= zoom;
     translate_y *= zoom;
     //We modify translate_x and translate_y in a way that cancels out how they were modified on line 136 and 137.
